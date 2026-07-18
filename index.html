@@ -5,8 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bhavya Jain | Product Manager</title>
 <meta name="description" content="Bhavya Jain, Product Manager. Founder of YAC, an AI-driven study-abroad platform. Real experience, real case study, real numbers.">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%236d28d9'/%3E%3Ctext x='32' y='43' font-family='Arial,sans-serif' font-size='30' font-weight='800' fill='white' text-anchor='middle'%3EBJ%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bhavya Jain | Product Manager">
+<meta property="og:description" content="Founder of YAC, a real study-abroad business built solo, plus enterprise delivery at Nokia. Real case study, real numbers, real product work.">
+<meta property="og:url" content="https://bhavyabafna.github.io/">
+<meta property="og:image" content="https://yourabroadconsultant.com/wp-content/uploads/2025/01/w.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bhavya Jain | Product Manager">
+<meta name="twitter:description" content="Founder of YAC, a real study-abroad business built solo, plus enterprise delivery at Nokia. Real case study, real numbers, real product work.">
+<meta name="twitter:image" content="https://yourabroadconsultant.com/wp-content/uploads/2025/01/w.png">
 <style>
   :root{
     --bg:#ffffff;
@@ -23,6 +31,7 @@
     --yellow-deep:#8a6d00;
     --yellow-tint:#fff3c4;
     --pink:#ec008c;
+    --pink-deep:#c4007a;
     --pink-tint:#fde0f0;
     --strategy-block:#fde0f0;
     --radius:12px;
@@ -46,7 +55,7 @@
   .reveal.visible{opacity:1;transform:none;}
 
   header.site{position:sticky;top:0;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:50;}
-  .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--maxw);margin:0 auto;}
+  .navbar{position:relative;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--maxw);margin:0 auto;}
   .brand{font-weight:800;letter-spacing:-.01em;font-size:14.5px;}
   nav.links{display:flex;gap:20px;font-size:13px;color:var(--muted);}
   nav.links a{text-decoration:none;transition:color .15s;}
@@ -54,13 +63,14 @@
   .badge-hire{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:6px 12px;border-radius:100px;background:var(--ink);color:#fff;}
   .dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;animation:pulse 2s infinite;}
   @keyframes pulse{0%{opacity:1;}50%{opacity:.35;}100%{opacity:1;}}
+  .nav-toggle{display:none;background:none;border:1px solid var(--line);border-radius:8px;font-size:16px;cursor:pointer;color:var(--ink);padding:6px 10px;}
 
   section{padding:64px 0;}
   section.tight{padding:48px 0;}
   .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:800;margin-bottom:10px;}
   .eyebrow.c-green{color:var(--green);}
   .eyebrow.c-yellow{color:var(--yellow-deep);}
-  .eyebrow.c-pink{color:var(--pink);}
+  .eyebrow.c-pink{color:var(--pink-deep);}
   h1{font-size:36px;line-height:1.18;letter-spacing:-.02em;margin:0 0 16px;font-weight:800;}
   .accent-word{color:var(--accent);}
   .hero .accent-word{color:#d8b4fe;}
@@ -137,7 +147,7 @@
   .qf.c-yellow{background:var(--yellow-tint);}
   .qf.c-yellow .qf-label{color:var(--yellow-deep);}
   .qf.c-pink{background:var(--pink-tint);}
-  .qf.c-pink .qf-label{color:var(--pink);}
+  .qf.c-pink .qf-label{color:var(--pink-deep);}
   .case-block{display:flex;flex-direction:column;gap:14px;}
 
   .stat-row{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0;}
@@ -162,6 +172,12 @@
   .video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;max-width:640px;}
   .video-grid .play-circle{width:32px;height:32px;}
   .video-grid .play-circle::after{border-width:6px 0 6px 10px;}
+  .video-grid.even-3{grid-template-columns:repeat(3,1fr);max-width:none;gap:16px;}
+  @media(max-width:640px){.video-grid.even-3{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:420px){.video-grid.even-3{grid-template-columns:1fr;}}
+  .video-grid.even-4{grid-template-columns:repeat(4,1fr);max-width:none;gap:16px;}
+  @media(max-width:800px){.video-grid.even-4{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:420px){.video-grid.even-4{grid-template-columns:1fr;}}
 
   .mock-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;}
   .case-block .mock-head{margin-bottom:0;}
@@ -234,13 +250,15 @@
     h1{font-size:27px;}
     h2{font-size:25px;}
     nav.links{display:none;}
+    .nav-toggle{display:block;}
+    nav.links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#fff;padding:16px 24px;border-bottom:1px solid var(--line);gap:14px;box-shadow:0 16px 30px -20px rgba(0,0,0,.25);}
     .stat-row{flex-direction:column;}
     .stat-item{border-right:none;border-bottom:1px solid var(--line);}
     section{padding:44px 0;}
   }
 
   /* FOOTER */
-  .footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:44px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:36px;}
+  .footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:44px;padding-bottom:0;}
   .footer-cta{flex:1 1 320px;min-width:280px;}
   .globe-wrap{position:relative;width:210px;height:210px;margin:0 auto;}
   .globe-wrap canvas{width:100%;height:100%;display:block;cursor:grab;touch-action:none;}
@@ -249,15 +267,11 @@
   .map-tooltip{position:fixed;pointer-events:none;background:#fff;color:#0d0d0f;font-size:12.5px;font-weight:700;padding:7px 13px;border-radius:8px;opacity:0;transform:translate(-50%,-140%);transition:opacity .12s;z-index:100;white-space:nowrap;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);}
   .map-tooltip.visible{opacity:1;}
 
-  .footer-globe-row{display:flex;justify-content:center;padding-top:36px;}
-  .footer-globe{text-align:center;width:260px;}
-  .footer-globe .eyebrow{color:rgba(255,255,255,.55);margin-bottom:10px;font-size:11px;}
-  .footer-globe .globe-wrap{width:240px;height:240px;margin:0 auto;}
   .footer-side{flex:0 0 auto;text-align:right;}
   .footer-side .footer-links{justify-content:flex-end;}
   .off-duty{margin-top:14px;display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;opacity:.85;}
 
-  .footer-meta{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-top:28px;}
+  .footer-meta{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-top:28px;padding-top:28px;border-top:1px solid rgba(255,255,255,.1);}
   .footer-meta .copyright{margin-top:0;}
   .footer-meta .fi-clock{margin-top:0;}
 
@@ -278,6 +292,14 @@
   .lang-toggle-row b{font-weight:700;flex:1;}
   .lang-toggle-row .lvl{color:var(--muted);font-size:11px;}
 
+  /* GLOBE TAB (fixed, bottom-right, stacked above the language tab) */
+  .globe-toggle{position:fixed;bottom:82px;right:20px;z-index:70;}
+  .globe-toggle-btn{background:var(--purple);color:#fff;border:none;border-radius:100px;padding:11px 17px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 10px 24px -8px rgba(0,0,0,.45);}
+  .globe-toggle-btn:hover{background:#5b21b6;}
+  .globe-toggle-panel{position:absolute;bottom:56px;right:0;background:var(--ink);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px;width:270px;box-shadow:0 20px 44px -20px rgba(0,0,0,.5);display:none;text-align:center;}
+  .globe-toggle-panel.open{display:block;}
+  .globe-toggle-panel .eyebrow{color:rgba(255,255,255,.55);margin-bottom:12px;font-size:11px;}
+
   @media (max-width:700px){
     .footer-top{flex-direction:column;align-items:center;text-align:center;}
     .footer-cta{text-align:left;width:100%;}
@@ -289,7 +311,7 @@
 <header class="site">
   <div class="navbar">
     <div class="brand">Bhavya Jain</div>
-    <nav class="links">
+    <nav class="links" id="navLinks">
       <a href="#case-study">Case Study</a>
       <a href="#experience">Experience</a>
       <a href="#prototypes">Prototypes</a>
@@ -297,6 +319,7 @@
       <a href="#journey">Journey</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu">☰</button>
     <span class="badge-hire"><span class="dot"></span> Open to work</span>
   </div>
 </header>
@@ -324,7 +347,7 @@
   <div class="section-head reveal">
     <div class="eyebrow">Flagship Case Study</div>
     <h2>Building YAC, alone</h2>
-    <p>From blank page to a live, revenue-generating business, solo, plus two AI features designed for what's next.</p>
+    <p>From a blank page to a live, revenue-generating business, solo — plus two AI features already designed for what's next.</p>
   </div>
 
   <div class="case reveal">
@@ -338,7 +361,7 @@
     <div class="case-quick">
       <div class="qf c-purple"><div class="qf-label">The problem</div><p>Study-abroad info is scattered and jargon-heavy. I built the plain-language place that explains what's next.</p></div>
       <div class="qf c-green"><div class="qf-label">What's live today</div><p>A real consultancy at yourabroadconsultant.com: paid courses, real partnerships, real students who've won scholarships.</p></div>
-      <div class="qf c-yellow"><div class="qf-label">What's next</div><p>Program discovery, document management, and two AI features, designed and demoed in Figma; not live yet.</p></div>
+      <div class="qf c-yellow"><div class="qf-label">What's next</div><p>An auto-generated journey &amp; study planner (home to new city — what to do, when, with reminders and progress tracking), plus an AI micro-loan eligibility checker approving up to €50 for day-one costs. Both designed and demoed in Figma; not live yet.</p></div>
       <div class="qf c-pink"><div class="qf-label">My role, solo</div><p>UX/UI, both AI prototypes, the website, marketing, and funnel optimization, as PM, designer, and tech lead at once.</p></div>
     </div>
     <div class="case-block">
@@ -346,11 +369,12 @@
       <div class="proj-grid">
         <div class="proj-card"><div class="co">Arpita Chiddarwar · Tampere University</div><p>"I got a 100% scholarship at Tampere University into the HTI program. YAC helped me with cover letters and gaining insights into the program."</p></div>
         <div class="proj-card"><div class="co">Raj Jain · University of Technology Sydney</div><p>"I never thought I could get a 5,000 AUD scholarship in Australia. No other study consultant would have helped me the same way."</p></div>
+        <div class="proj-card"><div class="co">Anant Thackar · University of Salford, UK</div><p>"Never thought pursuing studies abroad would be so easy. YAC and Bhavya helped me from application to loans — highly recommend."</p></div>
       </div>
     </div>
     <div class="case-block">
       <div class="mock-head"><h4>Told on video</h4><span>Real student testimonials</span></div>
-      <div class="video-grid">
+      <div class="video-grid even-3">
         <div>
           <a class="video-thumb" href="https://youtu.be/8u2K81ngtrI" target="_blank" rel="noopener">
             <img src="https://i.ytimg.com/vi/8u2K81ngtrI/hqdefault.jpg" alt="Hemant Jangid testimonial" loading="lazy">
@@ -384,26 +408,7 @@
       <div class="chart-box"><canvas id="chartYacTime"></canvas></div>
       <div class="chart-box"><canvas id="chartYacBuild"></canvas></div>
     </div>
-    <div class="case-block">
-      <div class="mock-head"><h4>How it works</h4><span>Illustrated concept visuals</span></div>
-      <div class="mock-grid">
-      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody"><div class="mline" style="width:80%"></div><div class="mline" style="width:60%"></div><div class="mline" style="width:70%"></div></div><div class="mcap">1 · Program discovery</div></div>
-      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody"><div class="mcheck"><b style="background:#1fa84a">✓</b>Transcripts</div><div class="mcheck"><b style="background:#1fa84a">✓</b>Passport scan</div><div class="mcheck"><b style="background:#8a6d00">○</b>Financial proof</div></div><div class="mcap">2 · Document manager</div></div>
-      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody" style="align-items:flex-start;"><div class="mchat me">How do I apply for a student visa?</div><div class="mchat bot">Step 1 of 5: gather your transcripts...</div></div><div class="mcap">3 · AI guidance tool</div></div>
-      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody" style="align-items:flex-start;"><div class="mchat bot">Searching embassy site for deadlines…</div><div class="mchat bot">Found: visa slot opens in 12 days</div></div><div class="mcap">4 · Research agent, live lookup</div></div>
-      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody"><div class="mgrid7">
-        <div></div><div></div><div class="on"></div><div></div><div></div><div></div><div></div>
-        <div></div><div></div><div></div><div></div><div class="on"></div><div></div><div></div>
-        <div></div><div class="on"></div><div></div><div></div><div></div><div></div><div></div>
-      </div></div><div class="mcap">5 · Deadline tracker</div></div>
-      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody"><div style="border-radius:20px;background:var(--green-tint);color:var(--green);font-size:9px;text-align:center;padding:6px;">Matched: 3 programs for you</div><div class="mline" style="width:60%"></div></div><div class="mcap">6 · Personalized recommendations</div></div>
-      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody mfunnel"><div style="width:95%"></div><div style="width:70%"></div><div style="width:48%"></div><div style="width:30%"></div></div><div class="mcap">7 · Visit to application funnel</div></div>
-      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mdonut" style="background:conic-gradient(#6d28d9 0 40%,#1fa84a 40% 65%,#8a6d00 65% 85%,#ec008c 85% 100%);margin:auto;"></div><div class="mcap">8 · Growth channel mix</div></div>
-      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody"><div class="mbars"><i style="height:40%;background:#6d28d9"></i><i style="height:55%;background:#6d28d9"></i><i style="height:85%;background:#6d28d9"></i><i style="height:30%;background:#6d28d9"></i></div></div><div class="mcap">9 · Real build sequence, by effort</div></div>
-      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody"><div class="mstatn">1 founder</div><div class="mstatl">PM + design + eng + growth</div></div><div class="mcap">10 · Built solo</div></div>
-      </div>
-    </div>
-    <p class="note">Illustrated concept visuals, not literal screenshots. Time and channel figures are self-estimated.</p>
+    <p class="note">Time and channel figures are self-estimated.</p>
   </div>
 </section>
 
@@ -411,7 +416,7 @@
   <div class="section-head reveal">
     <div class="eyebrow c-green">Experience</div>
     <h2>Before and alongside YAC</h2>
-    <p>Full story is in the Journey timeline below; here's the quick proof.</p>
+    <p>Enterprise process at Nokia, community-building at MathWorks, business advisory at Aira — the reps that shaped how I run YAC.</p>
   </div>
   <div class="proj-grid">
     <div class="proj-card c-purple reveal">
@@ -452,9 +457,9 @@
   <div class="section-head reveal">
     <div class="eyebrow c-yellow">Designed, Not Yet Built</div>
     <h2>High-fidelity B2B &amp; B2C prototypes, in Figma</h2>
-    <p>The next version of YAC: B2C for students, B2B for schools and agents. Designed, not yet shipped.</p>
+    <p>What I'd ship next if I had a team: B2C for students, B2B for schools and agents, fully designed and ready to build.</p>
   </div>
-  <div class="video-grid reveal">
+  <div class="video-grid even-4 reveal">
     <div>
       <a class="video-thumb" href="https://youtu.be/xWzwRU1eMJE" target="_blank" rel="noopener">
         <img src="https://i.ytimg.com/vi/xWzwRU1eMJE/hqdefault.jpg" alt="YAC Global B2C Product Demo" loading="lazy">
@@ -492,7 +497,7 @@
   <div class="section-head reveal">
     <div class="eyebrow c-pink">Strategy &amp; Market Thinking</div>
     <h2>How I sized the opportunity, and what I built first</h2>
-    <p>Real market data, and the real reasoning behind YAC's build order, not a hypothetical exercise.</p>
+    <p>The market math and the sequencing logic I actually used to decide what to build first.</p>
   </div>
   <div class="strategy-grid">
     <div class="strategy-card reveal">
@@ -528,7 +533,7 @@
   <div class="section-head reveal">
     <div class="eyebrow">Journey</div>
     <h2>The real timeline</h2>
-    <p>Education, enterprise experience, and the founder journey, in order. Full resume is downloadable at the bottom of the page.</p>
+    <p>School, corporate roles, and building YAC — everything that got me here, in order.</p>
   </div>
   <div class="timeline reveal">
     <div class="tl-item">
@@ -588,7 +593,7 @@
       <div class="footer-cta">
         <div class="eyebrow">Get in touch</div>
         <h2>Let's build something worth using.</h2>
-        <p style="max-width:420px;margin:8px 0 0;">I'm currently open to Product Manager roles. Happy to walk through YAC, or anything else on this page, in more depth.</p>
+        <p style="max-width:420px;margin:8px 0 0;">I'm currently open to Product Manager roles. Happy to walk through YAC, or anything else here, in more depth.</p>
         <div class="hero-cta" style="margin-top:20px;">
           <a class="btn btn-accent" href="mailto:bhavya2703@gmail.com">Email me</a>
           <a class="btn btn-ghost-dark" href="https://wa.me/358469023068" target="_blank" rel="noopener">WhatsApp me</a>
@@ -609,22 +614,23 @@
         </div>
       </div>
     </div>
-    <div class="footer-globe-row reveal">
-      <div class="footer-globe">
-        <div class="eyebrow">Where I've Been · 12 countries</div>
-        <div class="globe-wrap">
-          <canvas id="globeCanvas"></canvas>
-        </div>
-        <div class="globe-hint">Drag to rotate, hover a dot · green = home</div>
-      </div>
-    </div>
     <div class="footer-meta">
       <div class="copyright">© 2026 Bhavya Jain. Case study reflects real work on YAC; illustrated visuals are concept representations, not literal screenshots. Curious what shaped the design decisions on this page? See the <a href="./brand-guide.html" target="_blank" rel="noopener" style="color:rgba(255,255,255,.55);">brand &amp; visual guide ↗</a>.</div>
       <div class="fi-clock" id="fiClock"></div>
     </div>
-    <div class="map-tooltip" id="mapTooltip"></div>
   </div>
 </footer>
+
+<div class="globe-toggle">
+  <button class="globe-toggle-btn" id="globeToggleBtn" type="button">🌍 Where I've Been</button>
+  <div class="globe-toggle-panel" id="globeTogglePanel">
+    <div class="eyebrow">12 countries</div>
+    <div class="globe-wrap">
+      <canvas id="globeCanvas"></canvas>
+    </div>
+    <div class="globe-hint">Drag to rotate, hover a dot · green = home</div>
+  </div>
+</div>
 
 <div class="lang-toggle">
   <button class="lang-toggle-btn" id="langBtn" type="button">🌐 Languages</button>
@@ -636,6 +642,10 @@
   </div>
 </div>
 
+<div class="map-tooltip" id="mapTooltip"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 Chart.defaults.font.family = "-apple-system, Inter, sans-serif";
 Chart.defaults.color = "#6b6b70";
@@ -674,7 +684,7 @@ const io = new IntersectionObserver((entries)=>{
 }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// 3D rotating globe: photoreal Earth (with a hand-drawn fallback), 23 real visited cities
+// 3D rotating globe: photoreal Earth (with a hand-drawn fallback), 26 real visited cities
 (function(){
   if(typeof THREE === 'undefined') return;
   const canvas = document.getElementById('globeCanvas');
@@ -961,6 +971,35 @@ document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   });
   document.addEventListener('click', (e) => {
     if(!langPanel.contains(e.target) && e.target !== langBtn){ langPanel.classList.remove('open'); }
+  });
+})();
+
+// Globe tab (fixed, bottom-right, stacked above the language tab)
+(function(){
+  const globeBtn = document.getElementById('globeToggleBtn');
+  const globePanel = document.getElementById('globeTogglePanel');
+  if(!globeBtn || !globePanel) return;
+  globeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    globePanel.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if(!globePanel.contains(e.target) && e.target !== globeBtn){ globePanel.classList.remove('open'); }
+  });
+})();
+
+// Mobile nav toggle
+(function(){
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('navLinks');
+  if(!toggle || !nav) return;
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    nav.classList.toggle('open');
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+  document.addEventListener('click', (e) => {
+    if(!nav.contains(e.target) && e.target !== toggle){ nav.classList.remove('open'); }
   });
 })();
 
