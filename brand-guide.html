@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhavya Jain — Portfolio Brand Guide</title>
+<style>
+  :root{
+    --bg:#ffffff;
+    --ink:#0d0d0f;
+    --muted:#6b6b70;
+    --line:#ececeb;
+    --panel:#fafaf9;
+    --accent:#6d28d9;
+    --purple:#6d28d9;
+    --purple-tint:#efe4ff;
+    --green:#1fa84a;
+    --green-tint:#dffbe7;
+    --yellow:#ffd23f;
+    --yellow-deep:#8a6d00;
+    --yellow-tint:#fff3c4;
+    --pink:#ec008c;
+    --pink-tint:#fde0f0;
+    --strategy-block:#fde0f0;
+    --radius:12px;
+    --maxw:1040px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  a{color:var(--accent);}
+
+  header.gsite{background:var(--ink);color:#fff;padding:64px 0 48px;}
+  header.gsite .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#d8b4fe;font-weight:800;margin-bottom:12px;}
+  header.gsite h1{font-size:34px;margin:0 0 14px;font-weight:800;letter-spacing:-.02em;}
+  header.gsite p{font-size:16px;max-width:600px;color:rgba(255,255,255,.72);margin:0;}
+
+  section{padding:56px 0;}
+  .section-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--accent);font-weight:800;margin-bottom:8px;}
+  h2{font-size:24px;margin:0 0 8px;font-weight:800;letter-spacing:-.01em;}
+  .lede{color:var(--muted);font-size:14.5px;max-width:640px;margin:0 0 28px;}
+
+  /* Color swatches */
+  .swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px;}
+  .swatch{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+  .swatch-fill{height:70px;}
+  .swatch-info{padding:12px 14px;background:#fff;}
+  .swatch-name{font-weight:700;font-size:13px;margin-bottom:2px;}
+  .swatch-hex{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted);}
+  .swatch-use{font-size:11.5px;color:var(--muted);margin-top:6px;}
+
+  /* Type scale */
+  .type-row{display:flex;align-items:baseline;gap:20px;padding:14px 0;}
+  .type-sample{flex:1;}
+  .type-meta{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted);white-space:nowrap;}
+  .t-h1{font-size:36px;font-weight:800;letter-spacing:-.02em;margin:0;}
+  .t-h2{font-size:32px;font-weight:800;letter-spacing:-.02em;margin:0;}
+  .t-h3{font-size:19px;font-weight:750;letter-spacing:-.01em;margin:0;}
+  .t-lede{font-size:18px;margin:0;}
+  .t-body{font-size:15px;margin:0;}
+  .t-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:800;}
+  .t-label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;color:var(--muted);}
+
+  /* Tokens */
+  .token-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;}
+  .token{border:1px solid var(--line);border-radius:var(--radius);padding:16px;}
+  .token b{display:block;font-size:20px;margin-bottom:4px;}
+  .token span{font-size:12px;color:var(--muted);}
+  .radius-demo{width:100%;height:44px;background:var(--accent);border-radius:var(--radius);margin-bottom:10px;}
+
+  /* Buttons */
+  .btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:9px;font-size:14px;font-weight:700;text-decoration:none;border:1px solid transparent;}
+  .btn-accent{background:var(--accent);color:#fff;}
+  .btn-ghost-dark{border-color:rgba(255,255,255,.25);color:#fff;background:var(--ink);}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:#fff;}
+  .comp-note{font-size:12.5px;color:var(--muted);margin-top:4px;}
+
+  /* Cards / tiles */
+  .card-demo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;}
+  .demo-card{border:1px solid var(--line);border-radius:11px;padding:20px;background:#fff;}
+  .demo-card h3{font-size:16px;margin:0 0 6px;}
+  .demo-card p{font-size:13px;color:var(--muted);margin:0;}
+  .demo-mtile{background:#fff;border:1px solid var(--line);border-radius:9px;padding:16px;}
+  .demo-chip{display:inline-block;border-radius:20px;background:var(--green-tint);color:var(--green);font-size:11px;font-weight:700;padding:6px 12px;}
+  .demo-qf{border-radius:var(--radius);}
+  .strategy-swatch{background:var(--strategy-block);border-radius:var(--radius);padding:20px;font-size:13px;color:var(--muted);}
+
+  /* Chart palette */
+  .chart-pal{display:flex;gap:0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);margin-bottom:10px;}
+  .chart-pal div{flex:1;height:48px;display:flex;align-items:flex-end;padding:6px;font-size:10px;font-family:ui-monospace,monospace;color:#fff;}
+
+  /* Globe spec */
+  .globe-spec-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;padding:12px 0;}
+  .dot-demo{width:20px;height:20px;border-radius:50%;flex-shrink:0;}
+  .halo-demo{position:relative;width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+  .halo-demo .dot-demo{position:absolute;}
+  .globe-earth-demo{width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 32% 28%, #2a5f8f 0%, #1a3f63 42%, #0d2440 70%, #061527 100%);position:relative;overflow:hidden;flex-shrink:0;box-shadow:inset -14px -14px 30px rgba(0,0,0,.5), 0 0 30px rgba(60,120,200,.25);}
+  .globe-earth-demo::before{content:"";position:absolute;inset:0;background:
+      radial-gradient(ellipse 40% 22% at 30% 35%, #3d7a4a 0%, transparent 70%),
+      radial-gradient(ellipse 30% 18% at 65% 55%, #3d7a4a 0%, transparent 70%),
+      radial-gradient(ellipse 20% 30% at 55% 20%, #3d7a4a 0%, transparent 70%);
+      opacity:.85;}
+
+  /* Voice */
+  .voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media(max-width:700px){.voice-grid{grid-template-columns:1fr;}}
+  .voice-col{border:1px solid var(--line);border-radius:var(--radius);padding:20px;}
+  .voice-col.do{border-color:var(--green);}
+  .voice-col.dont{border-color:var(--pink);}
+  .voice-col h3{margin:0 0 10px;font-size:14px;text-transform:uppercase;letter-spacing:.06em;}
+  .voice-col.do h3{color:var(--green);}
+  .voice-col.dont h3{color:var(--pink);}
+  .voice-col ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink);}
+  .voice-col li{margin-bottom:8px;}
+
+  footer.gfoot{padding:36px 0;text-align:center;color:var(--muted);font-size:12.5px;}
+  .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:24px;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px;}
+  .back-link:hover{color:#fff;border-color:#fff;}
+
+  /* section rhythm — alternate subtle tints instead of ruled dividers */
+  section:nth-of-type(odd){background:var(--panel);}
+</style>
+</head>
+<body>
+
+<header class="gsite">
+  <div class="wrap">
+    <a class="back-link" href="./index.html">← Back to portfolio</a>
+    <div class="eyebrow">Brand &amp; Visual Guide</div>
+    <h1>Bhavya Jain — Portfolio Design System</h1>
+    <p>The single reference for keeping every future addition to the site — text, buttons, charts, 2D mockups, or the 3D globe — in the same visual language as index.html. If it's not on this page, match the nearest thing that is.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">01</div>
+    <h2>Color palette — 5 core colors</h2>
+    <p class="lede">One neutral ink plus four vivid block colors, brightened and saturated — a nod to Marimekko's bold Finnish block-print style. Every section, chart, chip, and marker on the site draws from exactly this set.</p>
+    <div class="swatch-grid">
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--ink);"></div>
+        <div class="swatch-info"><div class="swatch-name">Ink</div><div class="swatch-hex">#0d0d0f</div><div class="swatch-use">Body text, hero/footer bg, headline color</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--purple);"></div>
+        <div class="swatch-info"><div class="swatch-name">Purple</div><div class="swatch-hex">#6d28d9</div><div class="swatch-use">Primary accent — CTAs, links, Case Study &amp; Journey, Nokia card</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--green);"></div>
+        <div class="swatch-info"><div class="swatch-name">Green</div><div class="swatch-hex">#1fa84a</div><div class="swatch-use">Experience section, "live/matched" states, MathWorks card, home marker</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--yellow);"></div>
+        <div class="swatch-info"><div class="swatch-name">Light yellow</div><div class="swatch-hex">#ffd23f (block) / #8a6d00 (text)</div><div class="swatch-use">Prototypes section — bright block for backgrounds, mustard-deep for text/labels</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-fill" style="background:var(--pink);"></div>
+        <div class="swatch-info"><div class="swatch-name">Pink</div><div class="swatch-hex">#ec008c</div><div class="swatch-use">Strategy section, Aira card, city markers on the globe</div></div>
+      </div>
+    </div>
+    <p class="comp-note" style="margin-top:18px;">Supporting neutrals (not counted in the 5): Background #ffffff, Muted #6b6b70, Line #ececeb, Panel #fafaf9 — used for structure only, never as a "brand" color.</p>
+    <div class="strategy-swatch" style="margin-top:18px;">
+      <b style="display:block;color:var(--ink);margin-bottom:6px;font-size:13px;">How the color-blocking works</b>
+      Each major section is tagged with one color from the palette — Case Study &amp; Journey stay purple (the primary/flagship color), Experience is green, Prototypes is yellow, and Strategy is pink (its whole section background is the pink tint block). The same rotation repeats inside components: the four Case Study quick-fact cards are each a solid tint block in this order, and the three Experience cards each get a matching top color-strip. Reuse this exact rotation for anything new — don't assign a 6th color to a new section.
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">02</div>
+    <h2>Typography</h2>
+    <p class="lede">System sans throughout — no serif, no display webfont. Weight and size carry the hierarchy, not decoration.</p>
+    <div style="border:1px solid var(--line);border-radius:var(--radius);padding:8px 20px;background:#fff;">
+      <div class="type-row"><div class="type-sample"><div class="t-eyebrow">Eyebrow label</div></div><div class="type-meta">12px / 800 / uppercase / accent</div></div>
+      <div class="type-row"><div class="type-sample"><div class="t-h1">Section headline</div></div><div class="type-meta">36px / 800 / -.02em</div></div>
+      <div class="type-row"><div class="type-sample"><div class="t-h2">Sub headline</div></div><div class="type-meta">32px / 800 / -.02em</div></div>
+      <div class="type-row"><div class="type-sample"><div class="t-h3">Card title</div></div><div class="type-meta">19px / 750</div></div>
+      <div class="type-row"><div class="type-sample"><p class="t-lede">Lede paragraph — one clear sentence, no jargon.</p></div><div class="type-meta">18px / 400</div></div>
+      <div class="type-row"><div class="type-sample"><p class="t-body">Body copy for descriptions and captions.</p></div><div class="type-meta">15px / 400</div></div>
+      <div class="type-row"><div class="type-sample"><div class="t-label">Quick-fact label</div></div><div class="type-meta">11px / 800 / uppercase / muted</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">03</div>
+    <h2>Spacing &amp; shape tokens</h2>
+    <p class="lede">One radius, one content width. Reuse them exactly — don't invent a second corner radius.</p>
+    <div class="token-grid">
+      <div class="token"><div class="radius-demo"></div><b>12px</b><span>--radius, used on cards, buttons pill-shapes excluded, chart boxes, globe columns</span></div>
+      <div class="token"><b>1040px</b><span>--maxw, max content width for every .wrap container</span></div>
+      <div class="token"><b>64 / 48px</b><span>Section vertical padding — 64px standard, 48px for .tight sections (used on all 5 main sections for a consistent rhythm)</span></div>
+      <div class="token"><b>24px</b><span>Side gutter on .wrap at all breakpoints</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">04</div>
+    <h2>Buttons</h2>
+    <div class="btn-row">
+      <a class="btn btn-accent" href="#">I'm available for hire →</a>
+      <a class="btn btn-ghost-dark" href="#">Ghost, dark backgrounds</a>
+      <a class="btn btn-ghost" href="#" style="border:1px solid var(--line);">Ghost, light backgrounds</a>
+    </div>
+    <p class="comp-note">Accent = primary action only (one per section). Ghost-dark on hero/footer. Ghost-light on white sections.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">05</div>
+    <h2>Cards &amp; tiles</h2>
+    <p class="lede">Same border/radius/white-fill recipe everywhere — color-blocking is added on top via tint backgrounds or a top strip, never by changing the base shape.</p>
+    <div class="card-demo-grid">
+      <div class="demo-card" style="border-top:4px solid var(--purple);"><h3>Experience proof card</h3><p>Logo row, title, stat chips. 22px padding, 11px radius, 4px color-strip on top (purple/green/pink, one per company).</p></div>
+      <div class="demo-mtile"><span class="demo-chip">Matched: 3 programs</span><p style="font-size:12px;color:var(--muted);margin-top:10px;">Mockup tile — green tint chip bg, green text, 9px radius.</p></div>
+      <div class="demo-card demo-qf" style="background:var(--yellow-tint);"><h3 style="color:var(--yellow-deep);">Quick-fact block</h3><p>Case-study bento cell — solid tint background, label colored to match.</p></div>
+    </div>
+    <div class="strategy-swatch" style="margin-top:18px;">Strategy section wrapper — the only place --strategy-block (pink tint) is used as a full-bleed section background.</div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">06</div>
+    <h2>Data-viz palette</h2>
+    <p class="lede">Chart.js configs use the same 4 block colors, always in this order — never introduce a 5th.</p>
+    <div class="chart-pal">
+      <div style="background:#6d28d9;">#6d28d9</div>
+      <div style="background:#1fa84a;">#1fa84a</div>
+      <div style="background:#8a6d00;">#8a6d00</div>
+      <div style="background:#ec008c;">#ec008c</div>
+    </div>
+    <p class="comp-note">Order: purple → green → mustard-yellow → pink. Used for the effort-split doughnut and build-order bar chart. Single-color bar charts (RICE scores, TAM/SAM/SOM bars) use purple alone.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">07</div>
+    <h2>3D globe spec</h2>
+    <p class="lede">The globe is the one 3D object on the site. Keep its palette and behavior identical everywhere it appears.</p>
+    <div class="globe-spec-row">
+      <div class="globe-earth-demo"></div>
+      <div style="flex:1;min-width:220px;">
+        <b style="display:block;font-size:14px;margin-bottom:4px;">Sphere</b>
+        <span style="font-size:13px;color:var(--muted);">Photographic texture (threejs.org earth_atmos_2048.jpg + specular map), with a procedural canvas fallback in matching ocean-blue/land-green tones if the texture fails to load. Two-layer additive atmosphere glow, faint blue, BackSide material. ~220-point starfield behind it.</span>
+      </div>
+    </div>
+    <div class="globe-spec-row">
+      <div class="halo-demo"><div class="dot-demo" style="background:#ff8fd0;opacity:.4;width:34px;height:34px;"></div><div class="dot-demo" style="background:#ec008c;position:absolute;"></div></div>
+      <div style="flex:1;min-width:220px;"><b style="display:block;font-size:14px;">City marker — #ec008c</b><span style="font-size:13px;color:var(--muted);">Every visited city except home, in the palette's pink. Halo at 35% opacity, #ff8fd0.</span></div>
+    </div>
+    <div class="globe-spec-row">
+      <div class="halo-demo"><div class="dot-demo" style="background:#7bdf9e;opacity:.45;width:38px;height:38px;"></div><div class="dot-demo" style="background:#1fa84a;position:absolute;"></div></div>
+      <div style="flex:1;min-width:220px;"><b style="display:block;font-size:14px;">Home marker — #1fa84a</b><span style="font-size:13px;color:var(--muted);">Tampere only, in the palette's green. Slightly larger marker + halo, halo at 45% opacity, #7bdf9e.</span></div>
+    </div>
+    <div class="globe-spec-row">
+      <div style="width:120px;font-family:ui-monospace,monospace;font-size:12px;color:var(--muted);">Sizing</div>
+      <div style="flex:1;min-width:220px;font-size:13px;color:var(--ink);">Footer showcase size: <b>240px</b> canvas in a 260px column, presented as its own centered row below the contact links — not squeezed between them. Drag to rotate (pointer events), slow auto-rotate when idle, raycaster hover tooltip on markers.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-label">08</div>
+    <h2>Tone of voice</h2>
+    <p class="lede">The site's credibility comes from being concrete and real. Every future line of copy should pass this filter.</p>
+    <div class="voice-grid">
+      <div class="voice-col do">
+        <h3>Do</h3>
+        <ul>
+          <li>State real numbers and dates (35+ months, 12 countries, Feb–Aug 2022).</li>
+          <li>Say what's live vs. prototyped, explicitly.</li>
+          <li>Keep sentences short and declarative.</li>
+          <li>Credit real companies with real logos, or an honest placeholder if none exists.</li>
+        </ul>
+      </div>
+      <div class="voice-col dont">
+        <h3>Don't</h3>
+        <ul>
+          <li>Invent metrics, logos, or quotes that aren't real.</li>
+          <li>Use vague growth-hacker language ("revolutionary", "game-changing").</li>
+          <li>Stack more than one CTA color per section.</li>
+          <li>Add a 6th color instead of reusing purple, green, yellow, or pink.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="gfoot">
+  <div class="wrap">Living reference — update this file whenever a token in index.html changes, so it never drifts from the real site.</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bhavya Jain | Product Manager</title>
+<meta name="description" content="Bhavya Jain, Product Manager. Founder of YAC, an AI-driven study-abroad platform. Real experience, real case study, real numbers.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+  :root{
+    --bg:#ffffff;
+    --ink:#0d0d0f;
+    --muted:#6b6b70;
+    --line:#ececeb;
+    --panel:#fafaf9;
+    --accent:#6d28d9;
+    --purple:#6d28d9;
+    --purple-tint:#efe4ff;
+    --green:#1fa84a;
+    --green-tint:#dffbe7;
+    --yellow:#ffd23f;
+    --yellow-deep:#8a6d00;
+    --yellow-tint:#fff3c4;
+    --pink:#ec008c;
+    --pink-tint:#fde0f0;
+    --strategy-block:#fde0f0;
+    --radius:12px;
+    --maxw:1040px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img,canvas{max-width:100%;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1);}
+  .reveal.visible{opacity:1;transform:none;}
+
+  header.site{position:sticky;top:0;background:rgba(255,255,255,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:50;}
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:var(--maxw);margin:0 auto;}
+  .brand{font-weight:800;letter-spacing:-.01em;font-size:14.5px;}
+  nav.links{display:flex;gap:20px;font-size:13px;color:var(--muted);}
+  nav.links a{text-decoration:none;transition:color .15s;}
+  nav.links a:hover{color:var(--ink);}
+  .badge-hire{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:6px 12px;border-radius:100px;background:var(--ink);color:#fff;}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block;animation:pulse 2s infinite;}
+  @keyframes pulse{0%{opacity:1;}50%{opacity:.35;}100%{opacity:1;}}
+
+  section{padding:64px 0;}
+  section.tight{padding:48px 0;}
+  .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:800;margin-bottom:10px;}
+  .eyebrow.c-green{color:var(--green);}
+  .eyebrow.c-yellow{color:var(--yellow-deep);}
+  .eyebrow.c-pink{color:var(--pink);}
+  h1{font-size:36px;line-height:1.18;letter-spacing:-.02em;margin:0 0 16px;font-weight:800;}
+  .accent-word{color:var(--accent);}
+  .hero .accent-word{color:#d8b4fe;}
+  .rotword{display:inline-block;transition:opacity .3s ease,transform .3s ease;}
+  .rotword.rotword-out{opacity:0;transform:translateY(8px);}
+  h2{font-size:32px;letter-spacing:-.02em;margin:0 0 14px;font-weight:800;line-height:1.15;}
+  h3{font-size:19px;margin:0 0 8px;font-weight:750;letter-spacing:-.01em;}
+  p.lede{font-size:18px;color:rgba(255,255,255,.68);max-width:540px;margin:0 0 36px;font-weight:400;}
+  .section-head{margin-bottom:30px;max-width:660px;}
+  .section-head p{color:var(--muted);font-size:16px;margin:0;}
+
+  .hero-outer{background:var(--ink);color:#fff;}
+
+  .hero{padding-top:88px;padding-bottom:60px;}
+  .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 24px;border-radius:9px;font-size:14px;font-weight:700;text-decoration:none;border:1px solid transparent;transition:transform .15s ease, background .15s ease, opacity .15s ease;}
+  .btn-accent{background:var(--accent);color:#fff;}
+  .btn-accent:hover{transform:translateY(-1px);opacity:.9;}
+  .btn-ghost-dark{border-color:rgba(255,255,255,.25);color:#fff;}
+  .btn-ghost-dark:hover{border-color:#fff;background:rgba(255,255,255,.06);}
+  .btn-ghost{border-color:var(--line);color:var(--ink);background:#fff;}
+  .btn-ghost:hover{border-color:#c9c9c6;}
+  .social-row{display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-size:13px;color:rgba(255,255,255,.5);}
+  .social-row a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px;transition:color .15s,border-color .15s;}
+  .social-row a:hover{color:#fff;border-color:#fff;}
+  .ice-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(59,140,255,.15);color:#9ec8ff;border:1px solid rgba(94,167,255,.35);border-radius:100px;padding:6px 13px;font-weight:700;font-size:12.5px;text-decoration:none;transition:background .15s;}
+  .ice-btn:hover{background:rgba(59,140,255,.28);}
+  .veg-btn{display:inline-flex;align-items:center;gap:6px;background:rgba(61,194,116,.15);color:#8ee6ae;border:1px solid rgba(61,194,116,.4);border-radius:100px;padding:6px 13px;font-weight:700;font-size:12.5px;cursor:pointer;transition:background .15s,transform .15s;font-family:inherit;}
+  .veg-btn:hover{background:rgba(61,194,116,.28);}
+  .veg-btn:active{transform:scale(.96);}
+  .veg-burst{position:fixed;pointer-events:none;font-size:18px;z-index:200;will-change:transform,opacity;animation:vegPop .9s ease-out forwards;}
+  @keyframes vegPop{0%{transform:translate(-50%,-50%) scale(.5);opacity:1;}100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.15);opacity:0;}}
+
+  .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-radius:var(--radius);overflow:hidden;margin-top:48px;background:#fff;}
+  .stat-cell{padding:22px 20px;border-right:1px solid var(--line);}
+  .stat-cell:last-child{border-right:none;}
+  .stat-num{font-size:25px;font-weight:800;letter-spacing:-.02em;color:var(--ink);}
+  .stat-label{font-size:11.5px;color:var(--muted);margin-top:4px;}
+
+  /* TIMELINE */
+  .timeline{position:relative;padding-left:30px;max-width:760px;}
+  .timeline::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line);}
+  .tl-item{position:relative;padding-bottom:24px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-dot{position:absolute;left:-30px;top:3px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid #fff;box-shadow:0 0 0 2px var(--line);}
+  .tl-dot.edu{background:#fff;border:3px solid var(--accent);}
+  .tl-date{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;}
+  .tl-org{font-size:12.5px;color:var(--accent);font-weight:700;margin-bottom:2px;}
+  .tl-title{font-size:17px;font-weight:750;margin-bottom:5px;}
+  .tl-desc{font-size:13.5px;color:#333;max-width:640px;}
+
+  /* CASE STUDY */
+  .case{border-top:3px solid var(--line);padding-top:24px;}
+  .case > * + *{margin-top:24px;}
+  .case > .case-quick{margin-top:28px;}
+  .case > .case-block{margin-top:36px;}
+  .case > .stat-row{margin-top:32px;}
+  .case > .chart-row{margin-top:28px;}
+  .case-head-row{display:flex;align-items:center;gap:10px;}
+  .logo-chip{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:13.5px;padding:6px 12px;border-radius:7px;background:var(--purple-tint);color:var(--purple);}
+  .hook{font-size:16px;font-weight:600;color:var(--ink);max-width:680px;margin:0;}
+  .case-prose p{font-size:15px;color:#333;margin:0 0 12px;max-width:700px;}
+  .case-prose p:last-child{margin-bottom:0;}
+  .case-prose{margin-bottom:0;}
+  .case-quick{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:700px){.case-quick{grid-template-columns:1fr;}}
+  .qf{border-radius:var(--radius);padding:18px 20px;}
+  .qf-label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;color:var(--accent);margin-bottom:5px;}
+  .qf p{font-size:14px;color:#333;margin:0;line-height:1.45;}
+  .qf.c-purple{background:var(--purple-tint);}
+  .qf.c-purple .qf-label{color:var(--purple);}
+  .qf.c-green{background:var(--green-tint);}
+  .qf.c-green .qf-label{color:var(--green);}
+  .qf.c-yellow{background:var(--yellow-tint);}
+  .qf.c-yellow .qf-label{color:var(--yellow-deep);}
+  .qf.c-pink{background:var(--pink-tint);}
+  .qf.c-pink .qf-label{color:var(--pink);}
+  .case-block{display:flex;flex-direction:column;gap:14px;}
+
+  .stat-row{display:flex;flex-wrap:wrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0;}
+  .stat-item{flex:1;min-width:140px;padding:14px 16px 14px 0;border-right:1px solid var(--line);}
+  .stat-item:last-child{border-right:none;}
+  .stat-item .n{font-size:22px;font-weight:800;letter-spacing:-.01em;}
+  .stat-item .l{font-size:11.5px;color:var(--muted);margin-top:3px;}
+
+  .chart-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:0;}
+  @media(max-width:700px){.chart-row{grid-template-columns:1fr;}}
+  .chart-box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;}
+  .chart-box canvas{max-height:160px;}
+
+  /* VIDEO THUMB (real thumbnail + play button, always links straight to YouTube) */
+  .video-thumb{display:block;position:relative;border-radius:6px;overflow:hidden;text-decoration:none;background:#000;aspect-ratio:16/9;}
+  .video-thumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.88;transition:opacity .15s;}
+  .video-thumb:hover img{opacity:1;}
+  .video-thumb .play-circle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;transition:background .15s,transform .15s;}
+  .video-thumb:hover .play-circle{background:var(--accent);transform:translate(-50%,-50%) scale(1.08);}
+  .video-thumb .play-circle::after{content:"";border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent #fff;margin-left:3px;}
+  .video-cap{font-size:11.5px;color:var(--muted);padding:8px 2px 0;font-weight:600;}
+  .video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;max-width:640px;}
+  .video-grid .play-circle{width:32px;height:32px;}
+  .video-grid .play-circle::after{border-width:6px 0 6px 10px;}
+
+  .mock-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;}
+  .case-block .mock-head{margin-bottom:0;}
+  .mock-head h4{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:800;margin:0;}
+  .mock-head span{font-size:11px;color:var(--muted);}
+  .mock-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  @media(max-width:900px){.mock-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:560px){.mock-grid{grid-template-columns:repeat(2,1fr);}}
+  .mtile{background:#fff;border:1px solid var(--line);border-radius:9px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease, border-color .2s ease;}
+  .mtile:hover{transform:translateY(-3px);border-color:#d3d3d0;}
+  .mtile .mtop{height:13px;background:#f2f1ed;display:flex;align-items:center;gap:3px;padding:0 6px;flex-shrink:0;}
+  .mtile .mdot{width:4px;height:4px;border-radius:50%;background:#d7d5cf;}
+  .mtile .mbody{flex:1;padding:9px;display:flex;flex-direction:column;gap:5px;min-height:82px;justify-content:center;}
+  .mtile .mcap{font-size:9px;color:var(--muted);padding:5px 8px;border-top:1px solid var(--line);background:#fcfcfb;line-height:1.3;}
+  .mline{height:5px;border-radius:3px;background:#e9e7e2;}
+  .mbars{display:flex;align-items:flex-end;gap:3px;height:46px;}
+  .mbars i{flex:1;border-radius:2px 2px 0 0;display:block;}
+  .mchat{border-radius:9px;padding:5px 7px;font-size:8px;line-height:1.3;max-width:88%;}
+  .mchat.me{background:var(--purple-tint);color:var(--purple);align-self:flex-end;}
+  .mchat.bot{background:#f4f3ef;color:#444;align-self:flex-start;}
+  .mgrid7{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;}
+  .mgrid7 div{aspect-ratio:1;border-radius:2px;background:#eceae4;}
+  .mgrid7 div.on{background:var(--accent);}
+  .mcheck{display:flex;align-items:center;gap:5px;font-size:8.5px;color:var(--ink);}
+  .mcheck b{width:11px;height:11px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:7px;flex-shrink:0;}
+  .mstatn{font-size:17px;font-weight:800;text-align:center;}
+  .mstatl{font-size:8.5px;color:var(--muted);text-align:center;}
+  .mdonut{width:38px;height:38px;border-radius:50%;margin:0 auto;}
+  .mfunnel div{height:8px;border-radius:3px;background:var(--accent);margin-bottom:4px;}
+  .note{font-size:12px;color:var(--muted);margin:0;}
+
+  /* STRATEGY */
+  .strategy-outer{background:var(--strategy-block);}
+  .strategy-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  @media (max-width:800px){.strategy-grid{grid-template-columns:1fr;}}
+  .strategy-card{background:#fff;border-radius:var(--radius);padding:30px;}
+  .framework-box{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:13px 15px;font-size:12.5px;color:var(--ink);margin:16px 0;}
+  .xlsx-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--ink);background:#fff;border:1px solid var(--ink);padding:10px 16px;border-radius:9px;text-decoration:none;margin-top:8px;transition:background .15s,color .15s;}
+  .xlsx-link:hover{background:var(--ink);color:#fff;}
+
+  /* EXPERIENCE CARDS */
+  .proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media (max-width:860px){.proj-grid{grid-template-columns:1fr;}}
+  .proj-card{border:1px solid var(--line);border-radius:11px;padding:22px;background:#fff;transition:transform .18s ease, border-color .18s ease;}
+  .proj-card.c-purple{border-top:4px solid var(--purple);}
+  .proj-card.c-green{border-top:4px solid var(--green);}
+  .proj-card.c-pink{border-top:4px solid var(--pink);}
+  .proj-card:hover{transform:translateY(-3px);border-color:#d3d3d0;}
+  .proj-card .co{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700;}
+  .co-row{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  .co-logo{height:20px;width:auto;max-width:64px;object-fit:contain;flex-shrink:0;}
+  .co-mono{height:22px;width:22px;flex-shrink:0;}
+  .proj-card p{font-size:13.5px;margin:8px 0;color:#333;}
+  .proj-stat{display:inline-flex;gap:6px;font-size:12px;background:var(--panel);border:1px solid var(--line);padding:4px 10px;border-radius:100px;margin-top:6px;margin-right:6px;}
+  .proj-stat b{color:var(--accent);}
+
+  footer{background:var(--ink);color:#fff;padding:56px 0 32px;}
+  footer .eyebrow{color:rgba(255,255,255,.55);}
+  footer p{color:rgba(255,255,255,.6);}
+  .footer-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:32px;}
+  .footer-links{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;align-items:center;}
+  .footer-links a{text-decoration:none;color:rgba(255,255,255,.65);border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:2px;}
+  .footer-links a:hover{color:#fff;border-color:#fff;}
+  .copyright{margin-top:44px;font-size:11.5px;color:rgba(255,255,255,.35);}
+  .fi-clock{margin-top:12px;font-size:11.5px;color:rgba(255,255,255,.45);}
+
+  @media (max-width:800px){
+    .stat-strip{grid-template-columns:repeat(2,1fr);}
+    .stat-cell{border-bottom:1px solid var(--line);}
+    h1{font-size:27px;}
+    h2{font-size:25px;}
+    nav.links{display:none;}
+    .stat-row{flex-direction:column;}
+    .stat-item{border-right:none;border-bottom:1px solid var(--line);}
+    section{padding:44px 0;}
+  }
+
+  /* FOOTER */
+  .footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:44px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:36px;}
+  .footer-cta{flex:1 1 320px;min-width:280px;}
+  .globe-wrap{position:relative;width:210px;height:210px;margin:0 auto;}
+  .globe-wrap canvas{width:100%;height:100%;display:block;cursor:grab;touch-action:none;}
+  .globe-wrap canvas:active{cursor:grabbing;}
+  .globe-hint{font-size:10.5px;color:rgba(255,255,255,.4);margin-top:12px;}
+  .map-tooltip{position:fixed;pointer-events:none;background:#fff;color:#0d0d0f;font-size:12.5px;font-weight:700;padding:7px 13px;border-radius:8px;opacity:0;transform:translate(-50%,-140%);transition:opacity .12s;z-index:100;white-space:nowrap;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);}
+  .map-tooltip.visible{opacity:1;}
+
+  .footer-globe-row{display:flex;justify-content:center;padding-top:36px;}
+  .footer-globe{text-align:center;width:260px;}
+  .footer-globe .eyebrow{color:rgba(255,255,255,.55);margin-bottom:10px;font-size:11px;}
+  .footer-globe .globe-wrap{width:240px;height:240px;margin:0 auto;}
+  .footer-side{flex:0 0 auto;text-align:right;}
+  .footer-side .footer-links{justify-content:flex-end;}
+  .off-duty{margin-top:14px;display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap;opacity:.85;}
+
+  .footer-meta{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;margin-top:28px;}
+  .footer-meta .copyright{margin-top:0;}
+  .footer-meta .fi-clock{margin-top:0;}
+
+  @media (max-width:700px){
+    .footer-side{text-align:left;}
+    .footer-side .footer-links,.off-duty{justify-content:flex-start;}
+  }
+
+  /* LANGUAGE TAB (fixed, bottom-right, always visible) */
+  .lang-toggle{position:fixed;bottom:20px;right:20px;z-index:70;}
+  .lang-toggle-btn{background:var(--ink);color:#fff;border:none;border-radius:100px;padding:11px 17px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;box-shadow:0 10px 24px -8px rgba(0,0,0,.45);}
+  .lang-toggle-btn:hover{background:#1c1c22;}
+  .lang-toggle-panel{position:absolute;bottom:56px;right:0;background:#fff;border:1px solid var(--line);border-radius:14px;padding:6px 16px;min-width:200px;box-shadow:0 20px 44px -20px rgba(0,0,0,.35);display:none;}
+  .lang-toggle-panel.open{display:block;}
+  .lang-toggle-row{display:flex;align-items:center;gap:8px;font-size:13px;padding:9px 0;border-bottom:1px solid var(--line);color:var(--ink);}
+  .lang-toggle-row:last-child{border-bottom:none;}
+  .lang-toggle-row .flag{font-size:15px;}
+  .lang-toggle-row b{font-weight:700;flex:1;}
+  .lang-toggle-row .lvl{color:var(--muted);font-size:11px;}
+
+  @media (max-width:700px){
+    .footer-top{flex-direction:column;align-items:center;text-align:center;}
+    .footer-cta{text-align:left;width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="navbar">
+    <div class="brand">Bhavya Jain</div>
+    <nav class="links">
+      <a href="#case-study">Case Study</a>
+      <a href="#experience">Experience</a>
+      <a href="#prototypes">Prototypes</a>
+      <a href="#strategy">Strategy</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="badge-hire"><span class="dot"></span> Open to work</span>
+  </div>
+</header>
+
+<div class="hero-outer">
+<section class="hero wrap">
+  <div class="eyebrow" style="color:#d8b4fe;">Product Manager, AI-Driven Products · Tampere, Finland</div>
+  <h1 class="reveal">I build <span class="accent-word rotword" id="rotWord">products</span></h1>
+  <p class="lede reveal">Founder of YAC, a real study-abroad business built solo, plus enterprise delivery at Nokia. Currently open to Product Manager roles.</p>
+  <div class="hero-cta reveal">
+    <a class="btn btn-accent" href="#contact">I'm available for hire →</a>
+    <a class="btn btn-ghost-dark" href="#case-study">See the case study</a>
+  </div>
+  <div class="social-row reveal">
+    <a href="https://www.linkedin.com/in/bhavyabafna/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="https://www.producthunt.com/@bhavyabafma" target="_blank" rel="noopener">Product Hunt ↗</a>
+    <a href="https://x.com/bhavyabafnaa" target="_blank" rel="noopener">X ↗</a>
+    <a href="mailto:bhavya2703@gmail.com">bhavya2703@gmail.com</a>
+  </div>
+</section>
+</div>
+
+
+<section id="case-study" class="wrap tight">
+  <div class="section-head reveal">
+    <div class="eyebrow">Flagship Case Study</div>
+    <h2>Building YAC, alone</h2>
+    <p>From blank page to a live, revenue-generating business, solo, plus two AI features designed for what's next.</p>
+  </div>
+
+  <div class="case reveal">
+    <div class="case-head-row">
+      <img src="https://yourabroadconsultant.com/wp-content/uploads/2025/01/w.png" alt="YAC logo" style="height:28px;width:auto;">
+      <span class="logo-chip">YAC · Your Abroad Consultant</span>
+      <a href="https://www.yourabroadconsultant.com" target="_blank" rel="noopener" style="font-size:12.5px;font-weight:700;color:var(--accent);text-decoration:none;border-bottom:1px solid currentColor;">yourabroadconsultant.com ↗</a>
+    </div>
+    <h3>Study abroad is one of the biggest decisions a student makes, and almost nobody explains it in plain language</h3>
+    <p class="hook">Admissions, visas, and financing, spread across dozens of institutions and government sites, in language built for bureaucrats, not 18-year-olds.</p>
+    <div class="case-quick">
+      <div class="qf c-purple"><div class="qf-label">The problem</div><p>Study-abroad info is scattered and jargon-heavy. I built the plain-language place that explains what's next.</p></div>
+      <div class="qf c-green"><div class="qf-label">What's live today</div><p>A real consultancy at yourabroadconsultant.com: paid courses, real partnerships, real students who've won scholarships.</p></div>
+      <div class="qf c-yellow"><div class="qf-label">What's next</div><p>Program discovery, document management, and two AI features, designed and demoed in Figma; not live yet.</p></div>
+      <div class="qf c-pink"><div class="qf-label">My role, solo</div><p>UX/UI, both AI prototypes, the website, marketing, and funnel optimization, as PM, designer, and tech lead at once.</p></div>
+    </div>
+    <div class="case-block">
+      <div class="mock-head"><h4>In their own words</h4><span>Real testimonials, published on yourabroadconsultant.com</span></div>
+      <div class="proj-grid">
+        <div class="proj-card"><div class="co">Arpita Chiddarwar · Tampere University</div><p>"I got a 100% scholarship at Tampere University into the HTI program. YAC helped me with cover letters and gaining insights into the program."</p></div>
+        <div class="proj-card"><div class="co">Raj Jain · University of Technology Sydney</div><p>"I never thought I could get a 5,000 AUD scholarship in Australia. No other study consultant would have helped me the same way."</p></div>
+      </div>
+    </div>
+    <div class="case-block">
+      <div class="mock-head"><h4>Told on video</h4><span>Real student testimonials</span></div>
+      <div class="video-grid">
+        <div>
+          <a class="video-thumb" href="https://youtu.be/8u2K81ngtrI" target="_blank" rel="noopener">
+            <img src="https://i.ytimg.com/vi/8u2K81ngtrI/hqdefault.jpg" alt="Hemant Jangid testimonial" loading="lazy">
+            <span class="play-circle"></span>
+          </a>
+          <div class="video-cap">Hemant Jangid, €24,000 scholarship + 100% tuition waiver</div>
+        </div>
+        <div>
+          <a class="video-thumb" href="https://youtu.be/Zl4ZjnAwVfw" target="_blank" rel="noopener">
+            <img src="https://i.ytimg.com/vi/Zl4ZjnAwVfw/hqdefault.jpg" alt="Anant Thackar testimonial" loading="lazy">
+            <span class="play-circle"></span>
+          </a>
+          <div class="video-cap">Anant Thackar, £3,000 scholarship, UK</div>
+        </div>
+        <div>
+          <a class="video-thumb" href="https://youtu.be/Mj-GdUTdDGY" target="_blank" rel="noopener">
+            <img src="https://i.ytimg.com/vi/Mj-GdUTdDGY/hqdefault.jpg" alt="Saijal Sharma testimonial" loading="lazy">
+            <span class="play-circle"></span>
+          </a>
+          <div class="video-cap">Saijal Sharma, 100% scholarship + €5,000 stipend</div>
+        </div>
+      </div>
+    </div>
+    <div class="stat-row">
+      <div class="stat-item"><div class="n">0→1</div><div class="l">Concept to live product</div></div>
+      <div class="stat-item"><div class="n">2</div><div class="l">AI features designed, solo</div></div>
+      <div class="stat-item"><div class="n">3-in-1</div><div class="l">PM, designer, and technical lead</div></div>
+      <div class="stat-item"><div class="n">35+</div><div class="l">Months building and iterating</div></div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-box"><canvas id="chartYacTime"></canvas></div>
+      <div class="chart-box"><canvas id="chartYacBuild"></canvas></div>
+    </div>
+    <div class="case-block">
+      <div class="mock-head"><h4>How it works</h4><span>Illustrated concept visuals</span></div>
+      <div class="mock-grid">
+      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody"><div class="mline" style="width:80%"></div><div class="mline" style="width:60%"></div><div class="mline" style="width:70%"></div></div><div class="mcap">1 · Program discovery</div></div>
+      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody"><div class="mcheck"><b style="background:#1fa84a">✓</b>Transcripts</div><div class="mcheck"><b style="background:#1fa84a">✓</b>Passport scan</div><div class="mcheck"><b style="background:#8a6d00">○</b>Financial proof</div></div><div class="mcap">2 · Document manager</div></div>
+      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody" style="align-items:flex-start;"><div class="mchat me">How do I apply for a student visa?</div><div class="mchat bot">Step 1 of 5: gather your transcripts...</div></div><div class="mcap">3 · AI guidance tool</div></div>
+      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody" style="align-items:flex-start;"><div class="mchat bot">Searching embassy site for deadlines…</div><div class="mchat bot">Found: visa slot opens in 12 days</div></div><div class="mcap">4 · Research agent, live lookup</div></div>
+      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody"><div class="mgrid7">
+        <div></div><div></div><div class="on"></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div class="on"></div><div></div><div></div>
+        <div></div><div class="on"></div><div></div><div></div><div></div><div></div><div></div>
+      </div></div><div class="mcap">5 · Deadline tracker</div></div>
+      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody"><div style="border-radius:20px;background:var(--green-tint);color:var(--green);font-size:9px;text-align:center;padding:6px;">Matched: 3 programs for you</div><div class="mline" style="width:60%"></div></div><div class="mcap">6 · Personalized recommendations</div></div>
+      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody mfunnel"><div style="width:95%"></div><div style="width:70%"></div><div style="width:48%"></div><div style="width:30%"></div></div><div class="mcap">7 · Visit to application funnel</div></div>
+      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mdonut" style="background:conic-gradient(#6d28d9 0 40%,#1fa84a 40% 65%,#8a6d00 65% 85%,#ec008c 85% 100%);margin:auto;"></div><div class="mcap">8 · Growth channel mix</div></div>
+      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody"><div class="mbars"><i style="height:40%;background:#6d28d9"></i><i style="height:55%;background:#6d28d9"></i><i style="height:85%;background:#6d28d9"></i><i style="height:30%;background:#6d28d9"></i></div></div><div class="mcap">9 · Real build sequence, by effort</div></div>
+      <div class="mtile"><div class="mtop"><span class="mdot"></span><span class="mdot"></span><span class="mdot"></span></div><div class="mbody"><div class="mstatn">1 founder</div><div class="mstatl">PM + design + eng + growth</div></div><div class="mcap">10 · Built solo</div></div>
+      </div>
+    </div>
+    <p class="note">Illustrated concept visuals, not literal screenshots. Time and channel figures are self-estimated.</p>
+  </div>
+</section>
+
+<section id="experience" class="wrap tight">
+  <div class="section-head reveal">
+    <div class="eyebrow c-green">Experience</div>
+    <h2>Before and alongside YAC</h2>
+    <p>Full story is in the Journey timeline below; here's the quick proof.</p>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card c-purple reveal">
+      <div class="co-row"><img class="co-logo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Nokia_wordmark.svg" alt="Nokia logo" loading="lazy"><div class="co">Nokia</div></div>
+      <h3>IT Project / Test Management Trainee</h3>
+      <span class="proj-stat">Feb <b>to</b> Aug 2022</span>
+    </div>
+    <div class="proj-card c-green reveal">
+      <div class="co-row"><img class="co-logo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Matlab_Logo.png" alt="MATLAB logo" loading="lazy"><div class="co">MathWorks</div></div>
+      <h3>MATLAB Student Ambassador</h3>
+      <span class="proj-stat">150 <b>students</b></span>
+      <span class="proj-stat">10+ <b>events</b></span>
+      <span class="proj-stat">15+ <b>campaigns</b></span>
+    </div>
+    <div class="proj-card c-pink reveal">
+      <div class="co-row">
+        <svg class="co-mono" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-label="Aira logo">
+          <rect width="100" height="100" rx="18" fill="#181818"/>
+          <g stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M50 18 L74 32 L74 64 L50 82 L26 64 L26 32 Z"/>
+            <path d="M50 18 L50 82"/>
+            <path d="M30 39 L46 39"/>
+            <path d="M30 46 L46 46"/>
+            <path d="M30 53 L46 53"/>
+            <path d="M30 60 L46 60"/>
+            <path d="M54 32 L64 50 L54 68"/>
+          </g>
+        </svg>
+        <div class="co">Aira</div>
+      </div>
+      <h3>Business Advisor</h3>
+      <span class="proj-stat">Jul 2018 <b>to</b> Jan 2025</span>
+    </div>
+  </div>
+</section>
+
+<section id="prototypes" class="wrap tight">
+  <div class="section-head reveal">
+    <div class="eyebrow c-yellow">Designed, Not Yet Built</div>
+    <h2>High-fidelity B2B &amp; B2C prototypes, in Figma</h2>
+    <p>The next version of YAC: B2C for students, B2B for schools and agents. Designed, not yet shipped.</p>
+  </div>
+  <div class="video-grid reveal">
+    <div>
+      <a class="video-thumb" href="https://youtu.be/xWzwRU1eMJE" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/xWzwRU1eMJE/hqdefault.jpg" alt="YAC Global B2C Product Demo" loading="lazy">
+        <span class="play-circle"></span>
+      </a>
+      <div class="video-cap">B2C · YAC Global Product Demo</div>
+    </div>
+    <div>
+      <a class="video-thumb" href="https://youtu.be/TD_ZoqOZ-lg" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/TD_ZoqOZ-lg/hqdefault.jpg" alt="Third-party B2C" loading="lazy">
+        <span class="play-circle"></span>
+      </a>
+      <div class="video-cap">B2C · Third-Party Integration</div>
+    </div>
+    <div>
+      <a class="video-thumb" href="https://youtu.be/qq5Ld6Hf8ng" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/qq5Ld6Hf8ng/hqdefault.jpg" alt="B2B Student side" loading="lazy">
+        <span class="play-circle"></span>
+      </a>
+      <div class="video-cap">B2B · Student Side</div>
+    </div>
+    <div>
+      <a class="video-thumb" href="https://youtu.be/1N4oNNQPJM4" target="_blank" rel="noopener">
+        <img src="https://i.ytimg.com/vi/1N4oNNQPJM4/hqdefault.jpg" alt="B2B Admin side" loading="lazy">
+        <span class="play-circle"></span>
+      </a>
+      <div class="video-cap">B2B · Admin Side</div>
+    </div>
+  </div>
+  <p class="note" style="margin-top:16px;">Titles are from the videos themselves; click any thumbnail to watch on YouTube.</p>
+</section>
+
+<div class="strategy-outer">
+<section id="strategy" class="wrap tight">
+  <div class="section-head reveal">
+    <div class="eyebrow c-pink">Strategy &amp; Market Thinking</div>
+    <h2>How I sized the opportunity, and what I built first</h2>
+    <p>Real market data, and the real reasoning behind YAC's build order, not a hypothetical exercise.</p>
+  </div>
+  <div class="strategy-grid">
+    <div class="strategy-card reveal">
+      <h3>Is the study-abroad market even big enough to matter?</h3>
+      <p style="font-size:14px;color:var(--muted);margin:0;">The global study-abroad market, narrowed to India, the world's largest source of outbound students.</p>
+      <div class="chart-box" style="margin:16px 0;"><canvas id="chartTamSam"></canvas></div>
+      <div class="framework-box">Method: TAM (global study-abroad agency market) to SAM (India-origin outbound students) to SOM (realistic Year-1 reach for a solo founder).</div>
+      <div class="stat-row" style="margin:14px 0;">
+        <div class="stat-item"><div class="n">$29.0B</div><div class="l">Global market (TAM), 2026</div></div>
+        <div class="stat-item"><div class="n">$5.0B</div><div class="l">India-origin segment (SAM)</div></div>
+        <div class="stat-item"><div class="n">$300K</div><div class="l">Illustrative Year-1 target (SOM)</div></div>
+      </div>
+      <a class="xlsx-link" href="./Product-Strategy-Models.xlsx" download>📊 Open the Excel model, Market Sizing tab</a>
+      <p class="note">TAM and India's share are sourced (see Excel). SOM is an illustrative Year-1 target, not captured revenue.</p>
+    </div>
+    <div class="strategy-card reveal">
+      <h3>With no team, what gets built first?</h3>
+      <p style="font-size:14px;color:var(--muted);margin:0;">Scored via RICE, then sequenced by real dependency: the base product has to exist before an AI feature can ship.</p>
+      <div class="chart-box" style="margin:16px 0;"><canvas id="chartRice"></canvas></div>
+      <div class="framework-box">Actual build order: UX/UI prototype, then the guidance tool, then the research agent, then growth optimization, reflecting both RICE score and technical dependency.</div>
+      <div class="stat-row" style="margin:14px 0;">
+        <div class="stat-item"><div class="n">6.0</div><div class="l">Top RICE score, AI guidance tool</div></div>
+        <div class="stat-item"><div class="n">1.8</div><div class="l">Research agent (built last, highest effort)</div></div>
+      </div>
+      <a class="xlsx-link" href="./Product-Strategy-Models.xlsx" download>📊 Open the Excel model, RICE Prioritization tab</a>
+      <p class="note">Reach, impact, and confidence are reconstructed estimates, not precise recorded metrics.</p>
+    </div>
+  </div>
+</section>
+</div>
+
+<section id="journey" class="wrap tight">
+  <div class="section-head reveal">
+    <div class="eyebrow">Journey</div>
+    <h2>The real timeline</h2>
+    <p>Education, enterprise experience, and the founder journey, in order. Full resume is downloadable at the bottom of the page.</p>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-dot edu"></div>
+      <div class="tl-date">Jul 2017 to Aug 2021</div>
+      <div class="tl-org">Symbiosis University of Applied Sciences</div>
+      <div class="tl-title">B.Tech, Computer Science Engineering</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Jul 2018 to Jan 2025</div>
+      <div class="tl-org">Aira</div>
+      <div class="tl-title">Business Advisor</div>
+      <div class="tl-desc">Advised a 3D animation studio from early formation through growth, across Asia, Europe, and North America.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot edu"></div>
+      <div class="tl-date">Aug 2021 to Aug 2023</div>
+      <div class="tl-org">Tampere University</div>
+      <div class="tl-title">M.Sc. Computing Sciences, Human-Technology Interaction</div>
+      <div class="tl-desc">Coursework completed, not conferred.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Nov 2021 to Jul 2022</div>
+      <div class="tl-org">MathWorks</div>
+      <div class="tl-title">MATLAB Student Ambassador</div>
+      <div class="tl-desc">Built a 150-student MATLAB/Simulink community, ran 10+ events, and executed 15+ marketing campaigns as the brand's university representative.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-date">Feb 2022 to Aug 2022</div>
+      <div class="tl-org">Nokia</div>
+      <div class="tl-title">IT Project / Test Management Trainee</div>
+      <div class="tl-desc">Supported delivery of Nokia's HR systems platform within the GFS team; ran sprint planning and QA validation using Agile and Jira.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot" style="background:#111;"></div>
+      <div class="tl-date">Aug 2023 to Present</div>
+      <div class="tl-org">YAC (Your Abroad Consultant)</div>
+      <div class="tl-title">Founder &amp; Product Lead</div>
+      <div class="tl-desc">Founded and built a 0-to-1 study-abroad consultancy from concept to a live, revenue-generating business, plus two AI features designed and prototyped for the next version.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot edu"></div>
+      <div class="tl-date">Aug 2025 to Sep 2026</div>
+      <div class="tl-org">Tredu Tampereen seudun ammattiopisto</div>
+      <div class="tl-title">Vocational Qualification in Business, International Business, Trade &amp; Tax Law</div>
+      <div class="tl-desc">In progress.</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-top reveal">
+      <div class="footer-cta">
+        <div class="eyebrow">Get in touch</div>
+        <h2>Let's build something worth using.</h2>
+        <p style="max-width:420px;margin:8px 0 0;">I'm currently open to Product Manager roles. Happy to walk through YAC, or anything else on this page, in more depth.</p>
+        <div class="hero-cta" style="margin-top:20px;">
+          <a class="btn btn-accent" href="mailto:bhavya2703@gmail.com">Email me</a>
+          <a class="btn btn-ghost-dark" href="https://wa.me/358469023068" target="_blank" rel="noopener">WhatsApp me</a>
+          <a class="btn btn-ghost-dark" href="./Bhavya_Jain_Product_Manager_CV.pdf" download>Download resume (PDF)</a>
+        </div>
+      </div>
+      <div class="footer-side">
+        <div class="footer-links reveal">
+          <a href="https://www.linkedin.com/in/bhavyabafna/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://www.producthunt.com/@bhavyabafma" target="_blank" rel="noopener">Product Hunt ↗</a>
+          <a href="https://x.com/bhavyabafnaa" target="_blank" rel="noopener">X ↗</a>
+          <a href="https://www.yourabroadconsultant.com" target="_blank" rel="noopener">Visit YAC ↗</a>
+          <a href="./brand-guide.html" target="_blank" rel="noopener">Brand &amp; Visual Guide ↗</a>
+        </div>
+        <div class="off-duty">
+          <a class="ice-btn" href="https://www.linkedin.com/in/bhavyabafna/" target="_blank" rel="noopener">🧊 Off duty, probably ice dipping</a>
+          <button class="veg-btn" id="vegBtn" type="button">🥦 Strictly vegetarian</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer-globe-row reveal">
+      <div class="footer-globe">
+        <div class="eyebrow">Where I've Been · 12 countries</div>
+        <div class="globe-wrap">
+          <canvas id="globeCanvas"></canvas>
+        </div>
+        <div class="globe-hint">Drag to rotate, hover a dot · green = home</div>
+      </div>
+    </div>
+    <div class="footer-meta">
+      <div class="copyright">© 2026 Bhavya Jain. Case study reflects real work on YAC; illustrated visuals are concept representations, not literal screenshots. Curious what shaped the design decisions on this page? See the <a href="./brand-guide.html" target="_blank" rel="noopener" style="color:rgba(255,255,255,.55);">brand &amp; visual guide ↗</a>.</div>
+      <div class="fi-clock" id="fiClock"></div>
+    </div>
+    <div class="map-tooltip" id="mapTooltip"></div>
+  </div>
+</footer>
+
+<div class="lang-toggle">
+  <button class="lang-toggle-btn" id="langBtn" type="button">🌐 Languages</button>
+  <div class="lang-toggle-panel" id="langPanel">
+    <div class="lang-toggle-row"><span class="flag">🇬🇧</span><b>English</b><span class="lvl">Native · C2</span></div>
+    <div class="lang-toggle-row"><span class="flag">🇫🇮</span><b>Finnish</b><span class="lvl">B1</span></div>
+    <div class="lang-toggle-row"><span class="flag">🇮🇳</span><b>Hindi</b><span class="lvl">Native</span></div>
+    <div class="lang-toggle-row"><span class="flag">🇩🇪</span><b>German</b><span class="lvl">A1</span></div>
+  </div>
+</div>
+
+<script>
+Chart.defaults.font.family = "-apple-system, Inter, sans-serif";
+Chart.defaults.color = "#6b6b70";
+Chart.defaults.font.size = 10.5;
+const gridOpt = { display:false };
+const softGrid = { color:'#f1f0ec' };
+function titleOpt(t){ return { display:true, text:t, font:{size:11,weight:'600'}, color:'#0d0d0f' }; }
+
+new Chart(document.getElementById('chartYacTime'), {
+  type: 'doughnut',
+  data: { labels:['Product & discovery','AI engineering','Design/UX','Growth & marketing'], datasets:[{ data:[30,35,20,15], backgroundColor:['#6d28d9','#1fa84a','#8a6d00','#ec008c'], borderWidth:0 }] },
+  options:{ plugins:{legend:{position:'bottom',labels:{boxWidth:8,padding:8,font:{size:9.5}}}, title:titleOpt('Where the hours went, solo (self-estimated)')}, cutout:'58%' }
+});
+new Chart(document.getElementById('chartYacBuild'), {
+  type: 'bar',
+  data: { labels:['UX/UI prototype','Guidance tool','Research agent','Growth optimization'], datasets:[{ data:[2,2.5,4,1.5], backgroundColor:'#6d28d9', borderRadius:6, barThickness:20 }] },
+  options:{ indexAxis:'y', plugins:{legend:{display:false}, title:titleOpt('Real build effort by phase (person-months, est.)')}, scales:{ x:{grid:softGrid, beginAtZero:true}, y:{grid:gridOpt} } }
+});
+
+new Chart(document.getElementById('chartTamSam'), {
+  type: 'doughnut',
+  data: { labels:['SAM, India-origin ($5.0B)','SOM, Yr1 target ($300K)','Rest of global TAM ($24.0B)'], datasets:[{ data:[4985,0.3,23995], backgroundColor:['#6d28d9','#ec008c','#ffd23f'], borderWidth:0 }] },
+  options:{ plugins:{legend:{position:'bottom',labels:{boxWidth:8,padding:8,font:{size:9.5}}}, title:titleOpt('$29.0B global TAM broken into SAM / SOM ($M)')}, cutout:'58%' }
+});
+new Chart(document.getElementById('chartRice'), {
+  type: 'bar',
+  data: {
+    labels: ['AI guidance tool','UX/UI prototype','Growth optimization','Research agent'],
+    datasets: [{ data:[6.0,5.4,4.27,1.8], backgroundColor:'#6d28d9', borderRadius:6, barThickness:20 }]
+  },
+  options:{ indexAxis:'y', plugins:{legend:{display:false}, title:titleOpt('RICE score by initiative')}, scales:{ x:{grid:softGrid, beginAtZero:true}, y:{grid:gridOpt} } }
+});
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// 3D rotating globe: photoreal Earth (with a hand-drawn fallback), 23 real visited cities
+(function(){
+  if(typeof THREE === 'undefined') return;
+  const canvas = document.getElementById('globeCanvas');
+  const tooltip = document.getElementById('mapTooltip');
+  if(!canvas) return;
+
+  const size = 240;
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  renderer.setSize(size, size);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 200);
+  camera.position.z = 6.6;
+
+  // Studio-style lighting: soft ambient fill + a punchy key light for real shading/specular highlight
+  scene.add(new THREE.AmbientLight(0xffffff, 0.45));
+  const key = new THREE.DirectionalLight(0xffffff, 1.15);
+  key.position.set(4, 2.2, 5);
+  scene.add(key);
+  const rim = new THREE.DirectionalLight(0x8fb8ff, 0.35);
+  rim.position.set(-4, -1, -3);
+  scene.add(rim);
+
+  // Distant starfield for a "planet in space" backdrop
+  (function(){
+    const starCount = 220;
+    const positions = new Float32Array(starCount * 3);
+    for(let i = 0; i < starCount; i++){
+      const r = 40 + Math.random() * 30;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.acos(2 * Math.random() - 1);
+      positions[i*3]   = r * Math.sin(phi) * Math.cos(theta);
+      positions[i*3+1] = r * Math.sin(phi) * Math.sin(theta);
+      positions[i*3+2] = r * Math.cos(phi);
+    }
+    const starGeo = new THREE.BufferGeometry();
+    starGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const starMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.35, transparent:true, opacity:0.55 });
+    scene.add(new THREE.Points(starGeo, starMat));
+  })();
+
+  const globeGroup = new THREE.Group();
+  scene.add(globeGroup);
+
+  // --- Hand-drawn fallback texture (used instantly, and if the real photo fails to load) ---
+  function buildFallbackTexture(){
+    const W = 1024, H = 512;
+    const c = document.createElement('canvas');
+    c.width = W; c.height = H;
+    const ctx = c.getContext('2d');
+
+    // Ocean
+    const oceanGrad = ctx.createLinearGradient(0, 0, 0, H);
+    oceanGrad.addColorStop(0, '#0e3f66');
+    oceanGrad.addColorStop(0.5, '#1b6ca0');
+    oceanGrad.addColorStop(1, '#0e3f66');
+    ctx.fillStyle = oceanGrad;
+    ctx.fillRect(0, 0, W, H);
+
+    function project(lon, lat){
+      return [ (lon + 180) / 360 * W, (90 - lat) / 180 * H ];
+    }
+    function landmass(points, fill){
+      ctx.beginPath();
+      points.forEach(([lon, lat], i) => {
+        const [x, y] = project(lon, lat);
+        if(i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.closePath();
+      ctx.fillStyle = fill;
+      ctx.fill();
+    }
+
+    const green1 = '#2fa860', green2 = '#3dc274';
+
+    landmass([[-165,68],[-150,71],[-128,71],[-95,68],[-75,62],[-63,49],[-58,46],[-70,34],[-80,24],[-97,17],[-105,20],[-115,29],[-124,40],[-125,50],[-140,58],[-165,60]], green1); // North America
+    landmass([[-55,60],[-44,66],[-33,72],[-28,79],[-40,83],[-56,82],[-66,75],[-60,64]], '#e8eef2'); // Greenland (icy)
+    landmass([[-80,10],[-75,5],[-70,-5],[-70,-20],[-73,-35],[-70,-50],[-64,-55],[-58,-52],[-55,-35],[-40,-15],[-35,-5],[-50,5],[-60,10],[-70,12]], green2); // South America
+    landmass([[-10,36],[-9,44],[0,50],[10,55],[20,59],[30,61],[28,50],[20,45],[15,40],[0,38],[-5,36]], green1); // Europe
+    landmass([[-17,20],[-15,10],[-10,4],[0,5],[10,4],[20,0],[35,-6],[40,-16],[35,-26],[25,-34],[17,-35],[14,-25],[12,-4],[10,10],[0,15],[-10,25],[-17,32]], green2); // Africa
+    landmass([[30,45],[45,52],[65,58],[90,61],[115,58],[135,52],[142,45],[135,35],[122,25],[110,10],[100,5],[90,8],[80,8],[72,15],[65,25],[50,30],[35,38]], green1); // Asia
+    landmass([[113,-22],[122,-18],[135,-12],[142,-11],[145,-16],[150,-25],[145,-33],[140,-38],[130,-33],[118,-33],[113,-28]], green2); // Australia
+
+    // Faint lat/long grid, like a studio-rendered globe
+    ctx.strokeStyle = 'rgba(255,255,255,0.10)';
+    ctx.lineWidth = 1;
+    for(let lat=-60; lat<=60; lat+=30){
+      const [,y] = project(0, lat);
+      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
+    }
+    for(let lon=-150; lon<=150; lon+=30){
+      const [x] = project(lon, 0);
+      ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke();
+    }
+
+    // Polar caps
+    ctx.fillStyle = 'rgba(232,238,242,0.85)';
+    ctx.fillRect(0, 0, W, H*0.045);
+    ctx.fillRect(0, H*0.955, W, H*0.045);
+
+    const tex = new THREE.CanvasTexture(c);
+    tex.needsUpdate = true;
+    return tex;
+  }
+
+  const sphereMat = new THREE.MeshPhongMaterial({ map: buildFallbackTexture(), specular: 0x223344, shininess: 14 });
+  const sphere = new THREE.Mesh(new THREE.SphereGeometry(2, 56, 56), sphereMat);
+  globeGroup.add(sphere);
+
+  // Try to upgrade to a real photographic Earth texture; keep the hand-drawn one if it can't load
+  const loader = new THREE.TextureLoader();
+  loader.crossOrigin = 'anonymous';
+  loader.load(
+    'https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg',
+    (tex) => { sphereMat.map = tex; sphereMat.needsUpdate = true; },
+    undefined,
+    () => { /* network unavailable: fallback texture already showing */ }
+  );
+  loader.load(
+    'https://threejs.org/examples/textures/planets/earth_specular_2048.jpg',
+    (tex) => { sphereMat.specularMap = tex; sphereMat.shininess = 22; sphereMat.needsUpdate = true; },
+    undefined,
+    () => {}
+  );
+
+  // Soft atmosphere glow, like Earth seen from orbit
+  const atmosphere = new THREE.Mesh(
+    new THREE.SphereGeometry(2.14, 44, 44),
+    new THREE.MeshBasicMaterial({ color: 0x5fa8ff, transparent:true, opacity:0.18, side: THREE.BackSide })
+  );
+  scene.add(atmosphere);
+  const atmosphereOuter = new THREE.Mesh(
+    new THREE.SphereGeometry(2.24, 44, 44),
+    new THREE.MeshBasicMaterial({ color: 0x3b7fd8, transparent:true, opacity:0.08, side: THREE.BackSide })
+  );
+  scene.add(atmosphereOuter);
+
+  const cities = [
+    ["Helsinki",60.17,24.94], ["Tampere",61.50,23.79], ["Tallinn",59.44,24.75],
+    ["Riga",56.95,24.11], ["Brussels",50.85,4.35], ["Antwerp",51.22,4.40],
+    ["Paris",48.86,2.35], ["Utrecht",52.09,5.12], ["Doha",25.29,51.53],
+    ["Dubai",25.20,55.27], ["Kathmandu",27.72,85.32], ["New Delhi",28.61,77.21],
+    ["Mumbai",19.08,72.88], ["Indore",22.72,75.86], ["Ahmedabad",23.02,72.57],
+    ["Srinagar",34.08,74.79], ["Chennai",13.08,80.27], ["Udaipur",24.58,73.68],
+    ["Jaipur",26.92,75.79], ["Gangtok",27.33,88.61], ["Kolkata",22.57,88.36],
+    ["Patna",25.59,85.14], ["Bengaluru",12.97,77.59], ["Warsaw",52.23,21.01],
+    ["Gdansk",54.35,18.65], ["Istanbul",41.01,28.98]
+  ];
+
+  const R = 2.035;
+  const markerGeo = new THREE.SphereGeometry(0.042, 10, 10);
+  const homeMarkerGeo = new THREE.SphereGeometry(0.058, 10, 10);
+  const haloGeo = new THREE.SphereGeometry(0.078, 10, 10);
+  const homeHaloGeo = new THREE.SphereGeometry(0.1, 10, 10);
+  // marker colors match the site's pink/green brand tokens (var names kept for brevity)
+  const RED = 0xec008c, RED_HALO = 0xff8fd0;
+  const GREEN = 0x1fa84a, GREEN_HALO = 0x7bdf9e;
+  const markers = [];
+  cities.forEach(([name, lat, lon]) => {
+    const isHome = name === 'Tampere';
+    const phi = (90 - lat) * Math.PI / 180;
+    const theta = (lon + 180) * Math.PI / 180;
+    const x = -R * Math.sin(phi) * Math.cos(theta);
+    const y = R * Math.cos(phi);
+    const z = R * Math.sin(phi) * Math.sin(theta);
+    const halo = new THREE.Mesh(
+      isHome ? homeHaloGeo : haloGeo,
+      new THREE.MeshBasicMaterial({ color: isHome ? GREEN_HALO : RED_HALO, transparent:true, opacity: isHome ? 0.45 : 0.35 })
+    );
+    halo.position.set(x, y, z);
+    globeGroup.add(halo);
+    const m = new THREE.Mesh(
+      isHome ? homeMarkerGeo : markerGeo,
+      new THREE.MeshBasicMaterial({ color: isHome ? GREEN : RED })
+    );
+    m.position.set(x, y, z);
+    m.userData.name = isHome ? name + ' (home)' : name;
+    globeGroup.add(m);
+    markers.push(m);
+  });
+
+  let dragging = false, prevX = 0, prevY = 0, autoRotate = true;
+  let rotY = 0.5, rotX = -0.15;
+
+  canvas.addEventListener('pointerdown', (e) => {
+    dragging = true; autoRotate = false;
+    prevX = e.clientX; prevY = e.clientY;
+    canvas.setPointerCapture(e.pointerId);
+  });
+  canvas.addEventListener('pointerup', () => { dragging = false; });
+  canvas.addEventListener('pointerleave', () => { dragging = false; });
+
+  const raycaster = new THREE.Raycaster();
+  const mouse = new THREE.Vector2();
+  function checkHover(clientX, clientY){
+    const rect = canvas.getBoundingClientRect();
+    mouse.x = ((clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+    const hits = raycaster.intersectObjects(markers);
+    if(hits.length && tooltip){
+      tooltip.textContent = hits[0].object.userData.name;
+      tooltip.style.left = clientX + 'px';
+      tooltip.style.top = clientY + 'px';
+      tooltip.classList.add('visible');
+      canvas.style.cursor = 'pointer';
+    } else if(tooltip){
+      tooltip.classList.remove('visible');
+      canvas.style.cursor = dragging ? 'grabbing' : 'grab';
+    }
+  }
+
+  canvas.addEventListener('pointermove', (e) => {
+    if(dragging){
+      const dx = e.clientX - prevX, dy = e.clientY - prevY;
+      rotY += dx * 0.008;
+      rotX = Math.max(-1, Math.min(1, rotX + dy * 0.008));
+      prevX = e.clientX; prevY = e.clientY;
+    }
+    checkHover(e.clientX, e.clientY);
+  });
+  canvas.addEventListener('mouseleave', () => { if(tooltip) tooltip.classList.remove('visible'); });
+
+  function animate(){
+    requestAnimationFrame(animate);
+    if(autoRotate) rotY += 0.0022;
+    globeGroup.rotation.y = rotY;
+    globeGroup.rotation.x = rotX;
+    renderer.render(scene, camera);
+  }
+  animate();
+})();
+
+// Hero word rotator: "I build ___", cycling every 2s
+(function(){
+  const el = document.getElementById('rotWord');
+  if(!el) return;
+  const words = ['products', 'roadmaps', '0-to-1 platforms', 'real businesses'];
+  let idx = 0;
+  setInterval(() => {
+    el.classList.add('rotword-out');
+    setTimeout(() => {
+      idx = (idx + 1) % words.length;
+      el.textContent = words[idx];
+      el.classList.remove('rotword-out');
+    }, 300);
+  }, 2000);
+})();
+
+// Vegetarian easter egg: click bursts a little veggie confetti
+(function(){
+  const btn = document.getElementById('vegBtn');
+  if(!btn) return;
+  const emojis = ['🥦','🥕','🍅','🌽','🥑','🍏','🌱'];
+  btn.addEventListener('click', () => {
+    const rect = btn.getBoundingClientRect();
+    const originX = rect.left + rect.width / 2;
+    const originY = rect.top + rect.height / 2;
+    for(let i = 0; i < 10; i++){
+      const span = document.createElement('span');
+      span.className = 'veg-burst';
+      span.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      const angle = Math.random() * Math.PI * 2;
+      const dist = 55 + Math.random() * 55;
+      span.style.left = originX + 'px';
+      span.style.top = originY + 'px';
+      span.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
+      span.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
+      document.body.appendChild(span);
+      setTimeout(() => span.remove(), 950);
+    }
+  });
+})();
+
+// Language tab (fixed, bottom-right, always visible)
+(function(){
+  const langBtn = document.getElementById('langBtn');
+  const langPanel = document.getElementById('langPanel');
+  if(!langBtn || !langPanel) return;
+  langBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    langPanel.classList.toggle('open');
+  });
+  document.addEventListener('click', (e) => {
+    if(!langPanel.contains(e.target) && e.target !== langBtn){ langPanel.classList.remove('open'); }
+  });
+})();
+
+// Live Finland local time
+function updateFiClock(){
+  const now = new Date();
+  const fmt = new Intl.DateTimeFormat('en-GB', {
+    timeZone:'Europe/Helsinki', weekday:'short', day:'2-digit', month:'short',
+    hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false
+  }).format(now);
+  const el = document.getElementById('fiClock');
+  if(el) el.textContent = '🇫🇮 Local time in Finland: ' + fmt;
+}
+updateFiClock();
+setInterval(updateFiClock, 1000);
+</script>
+
+</body>
+</html>
